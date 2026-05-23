@@ -17,6 +17,9 @@ A simple command-line task manager built with Python. Tasks are stored locally i
 ## Usage
 
 ```bash
+# Brings up help
+python tasks.py help
+
 # Add a task
 python tasks.py add "Study Python"
 
