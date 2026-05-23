@@ -8,6 +8,7 @@ A simple command-line task manager built with Python. Tasks are stored locally i
 - List all tasks with status
 - Mark tasks as done
 - Delete tasks
+- Clear all done tasks
 - Persistent storage via `tasks.json`
 
 ## Requirements
@@ -31,6 +32,9 @@ python tasks.py done 1
 
 # Delete a task
 python tasks.py delete 2
+
+# Delete all done tasks
+python tasks.py clear
 ```
 
 ## Example
