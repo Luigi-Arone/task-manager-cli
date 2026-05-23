@@ -134,6 +134,9 @@ def main():
         delete_task(task_id)
 
     elif command == "clear":
+        if len(sys.argv) > 2:
+            print("Error: clear takes no additional arguments")
+            return
         clear_tasks()
 
     else:
