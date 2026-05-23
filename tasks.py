@@ -18,7 +18,7 @@ def save_tasks(tasks):
 def get_next_id(tasks):
     if not tasks:
         return 1
-    return max(task[id] for task in tasks) + 1
+    return max(task["id"] for task in tasks) + 1
 
 def add_task(title):
     tasks = load_tasks()
@@ -35,7 +35,7 @@ def add_task(title):
 def list_tasks():
     tasks = load_tasks()
     if not tasks:
-        print("No task found.")
+        print("No tasks found.")
         return
     for task in tasks:
         status = "x" if task["done"] else " "
@@ -63,6 +63,13 @@ def delete_task(task_id):
     save_tasks(new_tasks)
     print(f"✓ Task {task_id} deleted succesfully")
 
+def clear_tasks():
+    tasks = load_tasks()
+    for task in tasks:
+        if task["done"]:
+            delete_task(task["id"])
+    print("Done tasks deleted.")
+
 def print_help():
     print(f"""
         Usage: python3 tasks.py <command> [argument]
@@ -73,6 +80,7 @@ def print_help():
           list          Lists all tasks
           done <id>     Marks a task as concluded
           delete <id>   Removes a task
+          clear         Deletes all concluded tasks
         
         Examples:
           python tasks.py add "Study Python"
@@ -124,6 +132,9 @@ def main():
             print("Error: the id must be an integer.")
             return
         delete_task(task_id)
+
+    elif command == "clear":
+        clear_tasks()
 
     else:
         print(f"Unknown command: '{command}'")
